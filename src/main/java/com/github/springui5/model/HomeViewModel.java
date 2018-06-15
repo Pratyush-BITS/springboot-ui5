@@ -1,5 +1,9 @@
 package com.github.springui5.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 /**
  * View-model bean for {@code home.view.js}. Wraps an instance of {@linkplain com.github.springui5.model.HomeModel}.
  * Will be retrieved from web application context and autowired to {@linkplain com.github.springui5.web.HomeController}.
@@ -7,6 +11,8 @@ package com.github.springui5.model;
  * @author gushakov
  * @see com.github.springui5.conf.WebAppConfigurer
  */
+@Component
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class HomeViewModel {
 
     private HomeModel homeModel;

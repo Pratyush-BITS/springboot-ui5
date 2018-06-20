@@ -19,10 +19,10 @@ sap.ui.jsview("springui5.home", {
 
         // quantity input
         var oInput2 = new sap.ui.commons.TextField({
-            value: {
-                path: "value",
-                type: new sap.ui.model.type.Integer()
-            },
+//            value: {
+//                path: "value",
+//                type: new sap.ui.model.type.Integer()
+//            },
             placeholder: "Fruit quantity"
 
         });

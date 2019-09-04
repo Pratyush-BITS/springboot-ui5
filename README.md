@@ -1,21 +1,12 @@
-sprmvc-ui5
+springboot-ui5
 ==========
 
 The purpose of this demo application is to showcase the one possible set up for using [OpenUI5](http://sap.github.io/openui5/),
-formerly known as SAPUI5, with [Spring MVC](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html)
-framework.
+formerly known as OpenUI5, with [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) framework.
 
-It's a standard [Maven](http://maven.apache.org/) application which could be tested with embedded Tomcat server using
-the following command.
+It's a standard [Maven](http://maven.apache.org/) application which could be tested with embedded server using the following command.
 
-`> mvn tomcat7:run`
-
-OpenUI5 Web JAR
----------------
-
-OpenUI5 runtime JavaScript libraries are available from [Download](http://sap.github.io/openui5/download.html) (under Apache 2.0 license).
-I packaged them in a web JAR in `/WEB-INF/lib/openui5-runtime-1.16.8.jar`, which is used by Spring when configuring the
-web application. See `com.github.springui5.conf.WebAppConfigurer` class.
+`> mvn spring-boot:run`
 
 Useful links
 ------------

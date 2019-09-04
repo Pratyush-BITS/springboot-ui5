@@ -20,7 +20,7 @@ sap.ui.controller("springui5.home", {
 
     doAjax: function (path, content, type, async) {
         var params = {
-            url: "/springui5" + path,
+            url: path,
             dataType: "json",
             contentType: "application/json",
             context: this,

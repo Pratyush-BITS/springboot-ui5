@@ -1,6 +1,6 @@
 package com.github.springui5.domain;
 
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -18,7 +18,7 @@ public class Fruit implements Serializable {
     private long id;
 
     @NotNull
-    @NotBlank
+    @NotEmpty
     private String name;
 
     @NotNull
@@ -31,10 +31,6 @@ public class Fruit implements Serializable {
      */
     public static long newId() {
         return System.currentTimeMillis() + offset++;
-    }
-
-    public Fruit() {
-        // default constructor
     }
 
     public Fruit(String name, int quantity) {

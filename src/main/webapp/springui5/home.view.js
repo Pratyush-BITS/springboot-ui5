@@ -33,13 +33,19 @@ sap.ui.jsview("springui5.home", {
             press: function () {
                 // check if quantity is a number
                 if (oInput2.getValueState() !== sap.ui.core.ValueState.Error) {
+                    let quantity = oInput2.getValue();
+                    if(isNaN(quantity)){
+                        quantity = '';
+                    }
                     oController.add({
                             // id attribute can be ignored
                             name: oInput1.getValue(),
-                            quantity: oInput2.getValue()
+                            quantity: quantity
                         }
                     );
                 }
+                oInput1.setValue('');
+                oInput2.setValue('');
             }
         });
 

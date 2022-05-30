@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Will be retrieved from web application context and autowired to {@linkplain com.github.springui5.web.HomeController}.
  *
  * @author gushakov
- * @see com.github.springui5.conf.WebAppConfigurer
+ * com.github.springui5.conf.WebAppConfigurer
  */
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)

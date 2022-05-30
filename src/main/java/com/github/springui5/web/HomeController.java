@@ -15,10 +15,7 @@ import javax.validation.Valid;
 
 /**
  * Controller for handling Ajax requests from {@code home.controller.js}. Will be picked up during the
- * component scan, see {@linkplain org.springframework.context.annotation.ComponentScan} annotation specification on
- * {@linkplain com.github.springui5.conf.WebAppConfigurer}.
- *
- * @author gushakov
+ * component scan, see {@linkplain org.springframework.context.annotation.ComponentScan}
  */
 @Controller
 @RequestMapping(value = "/home", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

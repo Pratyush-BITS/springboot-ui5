@@ -2,7 +2,6 @@ package com.github.springui5.model;
 
 import com.github.springui5.domain.Fruit;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,11 +9,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Model for {@code home.view.js} view. Will be automatically serialized to Json via default {@linkplain
  * org.springframework.http.converter.HttpMessageConverter} configured by {@linkplain
- * org.springframework.web.servlet.config.annotation.EnableWebMvc} annotation on {@linkplain
+ * org.springframework.web.servlet.config.annotation.EnableWebMvc} annotation on {
  * com.github.springui5.conf.WebAppConfigurer} configuration class.
  *
  * @author gushakov
@@ -49,29 +49,27 @@ public class HomeModel implements Serializable {
 
     public HomeModel add(Fruit fruit) {
         // set id, it is 0 after deserializing from Json
-        fruit.setId(Fruit.newId());
-        listOfFruit.add(fruit);
+        Optional<Fruit> optional1 =
+                listOfFruit.parallelStream().filter(f -> f.getName().equals(fruit.getName())).findAny();
+
+//        optional1.ifPresentOrElse(optional1.,
+//                () -> {
+                    fruit.setId(Fruit.newId());
+                    listOfFruit.add(fruit);
+//                }
+//        );
+
         return this;
     }
 
     public HomeModel delete(final long id) {
-        CollectionUtils.filter(listOfFruit, new Predicate() {
-            @Override
-            public boolean evaluate(Object object) {
-                return ((Fruit) object).getId() != id;
-            }
-        });
+        CollectionUtils.filter(listOfFruit, object -> ((Fruit) object).getId() != id);
         return this;
     }
 
     public HomeModel update(final Fruit fruit) {
         // find the fruit with the same id
-        Fruit oldFruit = (Fruit) CollectionUtils.find(listOfFruit, new Predicate() {
-            @Override
-            public boolean evaluate(Object object) {
-                return ((Fruit) object).getId() == fruit.getId();
-            }
-        });
+        Fruit oldFruit = (Fruit) CollectionUtils.find(listOfFruit, object -> ((Fruit) object).getId() == fruit.getId());
         // update the fruit
         oldFruit.setName(fruit.getName());
         oldFruit.setQuantity(fruit.getQuantity());
